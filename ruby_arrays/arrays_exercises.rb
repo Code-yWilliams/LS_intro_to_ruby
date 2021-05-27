@@ -1,5 +1,5 @@
-=begin 
-Below we have given you an array and a number. 
+=begin
+Below we have given you an array and a number.
 Write a program that checks to see if the number appears in the array.
 =end
 
@@ -10,6 +10,12 @@ arr.each do |x|
   if x == number
     puts "#{number} is in this array!"
   end
+end
+
+#OR
+
+if arr.include?(number)
+  puts "three is in this array!"
 end
 
 =begin
@@ -30,7 +36,7 @@ disney_movies.each_with_index do |x, y|
 end
 
 =begin
-Write a program that iterates over an array and builds a new array that is the result of incrementing each value in the original array by a value of 2. 
+Write a program that iterates over an array and builds a new array that is the result of incrementing each value in the original array by a value of 2.
 You should have two arrays at the end of this program, The original array and the new array you've created. Print both arrays to the screen using the p method instead of puts.
 =end
 
@@ -41,3 +47,12 @@ end
 
 puts numbers
 puts numbers_plus_2
+
+#OR
+
+my_arr = [2, 5, 11, 32, 57]
+my_new_arr = []
+
+my_arr.each do |n|
+  my_new_arr << n + 2
+end
