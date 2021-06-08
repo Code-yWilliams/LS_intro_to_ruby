@@ -89,7 +89,7 @@ hash_of_arrays = {a: [1, 2, 3], b: ["x", "y", "z"]}
 puts hash_of_arrays
 
 =begin
-Given the following data structures. Write a program that copies the information from the array into the empty hash that applies to the correct person.
+ #11 Given the following data structures. Write a program that copies the information from the array into the empty hash that applies to the correct person.
 =end
 
 contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
@@ -123,3 +123,61 @@ puts arr_no_s
 
 arr_no_s_w = arr.delete_if {|element| element.start_with?("s", "w")}
 puts arr_no_s_w
+
+=begin
+Take the following array and turn it into a new array that consists of strings containing one word. 
+(ex. ["white snow", etc...] → ["white", "snow", etc...]. 
+Look into using Array's map and flatten methods, as well as String's split method.
+=end
+
+a = ['white snow', 'winter wonderland', 'melting ice',
+     'slippery sidewalk', 'salted roads', 'white trees']
+
+a_singular = a.collect {|element| element.split(" ").flatten}
+puts a_singular
+
+=begin
+Challenge: In exercise 11, we manually set the contacts hash values one by one. 
+Now, programmatically loop or iterate over the contacts hash from exercise 11, and populate the associated data from the contact_data array. 
+Hint: you will probably need to iterate over ([:email, :address, :phone]), and some helpful methods might be the Array shift and first methods.
+=end
+
+contact_data = ["joe@email.com", "123 Main st.", "555-123-4567"]
+            
+
+contacts = {"Joe Smith" => {}}
+
+data = [:email, :address, :phone]
+
+contacts.each do |name, hash|
+  data.each do |info|
+    hash[info] = contact_data.shift
+  end
+end
+
+puts contacts
+
+=begin 
+As a bonus, see if you can figure out how to make it work with multiple entries in the contacts hash
+=end
+
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+data = [:email, :address, :phone]
+
+contacts.each_with_index do |(name, info_hash), index|
+  data.each do |info|
+    info_hash[info] = contact_data[index].shift
+  end
+end
+
+puts contacts
+
+
+ 
+
+
+
